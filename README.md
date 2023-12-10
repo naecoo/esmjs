@@ -9,13 +9,12 @@
 
 ## Roadmap
 
-- file struct define
-- import esbuild 
-- define CLI opiton and flag (features?) 
-- posix interface
+- ~~file struct define~~
+- ~~import esbuild~~ 
+- ~~define CLI opiton and flag (features?)~~ 
 - coding
-  - basic functions
-  - log, signal and erros
+  - ~~basic functions~~
+  - ~~log, signal and erros~~
 - test and benchmark
 - docs`
 - publish
