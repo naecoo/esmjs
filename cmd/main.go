@@ -5,11 +5,12 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/evanw/esbuild/pkg/api"
 )
 
-func build(input, output string, minify, isBrowser bool) {
+func Build(input, output string, minify, isBrowser bool) {
 	platform := api.PlatformNode
 	if isBrowser {
 		platform = api.PlatformBrowser
@@ -40,24 +41,28 @@ func build(input, output string, minify, isBrowser bool) {
 }
 
 func Execute() {
-	var output string
-	flag.StringVar(&output, "o", "", "the full path of the output file")
-	minify := flag.Bool("m", false, "requires minify, default is false")
-	isBrowser := flag.Bool("b", false, "build script for browser platform, default is node platform")
-
-	flag.Parse()
-
-	if len(output) == 0 {
-		fmt.Println("no output file option, please specify -o option")
-		os.Exit(-1)
+	for _, arg := range os.Args[1:] {
+		if strings.Contains(arg, "-h") || strings.Contains(arg, "--help") {
+			fmt.Println("One Command transform Javascript to ESM module")
+			fmt.Println("Usage: esmjs <input> <output> [flags...]")
+			fmt.Println("-m    requires minify, default is false")
+			fmt.Println("-b    build script for browser platform, default is node platform")
+			fmt.Println("Eg: esmjs input.ts dist.js -m -b")
+			os.Exit(0)
+		}
+		if strings.Contains(arg, "-v") || strings.Contains(arg, "--version") {
+			fmt.Println("v0.0.1")
+			os.Exit(0)
+		}
 	}
 
-	tail := flag.Args()
-	if len(tail) == 0 {
-		fmt.Println("no input file")
-		os.Exit(-1)
+	var input, output string
+	argLen := len(os.Args)
+	if argLen <= 1 {
+		fmt.Println("esmjs: try 'esmjs --help' for more information")
+		os.Exit(0)
 	}
-	input := tail[0]
+	input = os.Args[1]
 	if _, error := os.Stat(input); error != nil {
 		if errors.Is(error, os.ErrNotExist) {
 			fmt.Println("input file not exists")
@@ -67,5 +72,16 @@ func Execute() {
 		}
 	}
 
-	build(input, output, *minify, *isBrowser)
+	if len(os.Args) <= 2 {
+		fmt.Println("no output file")
+		os.Exit(-1)
+	}
+	output = os.Args[2]
+
+	flagSet := flag.NewFlagSet("", flag.ExitOnError)
+	minify := flagSet.Bool("m", false, "requires minify, default is false")
+	isBrowser := flagSet.Bool("b", false, "build script for browser platform, default is node platform")
+	flagSet.Parse(os.Args[3:])
+
+	Build(input, output, *minify, *isBrowser)
 }
