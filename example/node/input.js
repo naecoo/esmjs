@@ -1,21 +1,14 @@
-export class Person {
-  #name;
+const express = require("express");
 
-  constructor(name) {
-    this.#name = name;
-  }
+const app = express();
 
-  get name() {
-    return this.#name;
-  }
+app.use("/", (req, res) => {
+  console.log("new context")
+  console.log("method: ", req.method);
+  console.log("path: ", req.path);
+  console.log();
+  res.end("Hello World!");
+});
 
-  set name(value) {
-    this.#name = value;
-  }
-
-  sayName() {
-    console.log(`My name is ${this.#name}`);
-  }
-}
-
-console.log("Hello World!");
+app.listen(8080);
+console.log("app is running in http://localhost:8080")

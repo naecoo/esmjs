@@ -1,21 +1,13 @@
-export class Person {
-  #name;
+import { ref, createApp } from "vue";
 
-  constructor(name) {
-    this.#name = name;
-  }
+const app = createApp({
+  setup() {
+    return {
+      count: ref(0),
+    };
+  },
+});
 
-  get name() {
-    return this.#name;
-  }
-
-  set name(value) {
-    this.#name = value;
-  }
-
-  sayName() {
-    console.log(`My name is ${this.#name}`);
-  }
-}
+app.mount("#app");
 
 console.log("Hello World!");

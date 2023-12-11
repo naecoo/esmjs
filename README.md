@@ -16,6 +16,6 @@
   - ~~basic functions~~
   - ~~log, signal and erros~~
 - ~~test and benchmark~~
-- example
+- ~~example~~
 - docs
 - publish
