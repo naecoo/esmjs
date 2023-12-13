@@ -1,6 +1,5 @@
 **One Command transform Javascript to ESM module**
 
-
 # Install
 
 ## Git
@@ -15,15 +14,15 @@ git clone https://github.com/naecoo/esmjs.git
 ## HomeBrew
 
 ```bash
-brew tap
+brew tap naecoo/esmjs
 
-brew install
+brew install esmjs
 
 esmjs --help
 ```
 
-
 # Usage
+
 ```
 esmjs input.js output.js
 
@@ -36,17 +35,3 @@ esmjs input.js output.js -m
 # build for browser platform
 esmhs input.js output.js -m -b
 ```
-
-
-## Roadmap
-
-- ~~file struct define~~
-- ~~import esbuild~~
-- ~~define CLI opiton and flag (features?)~~
-- ~~coding~~
-  - ~~basic functions~~
-  - ~~log, signal and erros~~
-- ~~test and benchmark~~
-- ~~example~~
-- ~~docs~~
-- publish
