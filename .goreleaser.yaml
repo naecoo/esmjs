@@ -18,8 +18,7 @@ universal_binaries:
   - replace: true
 
 brews:
-  -`
-    name: esmjs
+  - name: esmjs
     homepage: "https://github.com/naecoo/esmjs"
     repository:
       owner: naecoo
@@ -27,6 +26,5 @@ brews:
     commit_author:
       name: naecoo
       email: ocean7hy@gmail.com
-
 checksum:
-  name_template: 'checksums.txt'
+  name_template: "checksums.txt"
