@@ -21,7 +21,7 @@ brews:
   -
     name: esmjs
     homepage: "https://github.com/naecoo/esmjs"
-    tap:
+    repository:
       owner: naecoo
       name: homebrew-esmjs
     commit_author:
