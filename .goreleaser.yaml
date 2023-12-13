@@ -23,7 +23,7 @@ brews:
     homepage: "https://github.com/naecoo/esmjs"
     tap:
       owner: naecoo
-      name: homebrew-naecoo
+      name: homebrew-esmjs
     commit_author:
       name: naecoo
       email: ocean7hy@gmail.com
