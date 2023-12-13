@@ -1,0 +1,32 @@
+builds:
+  - binary: esmjs
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - amd64
+      - arm64
+    env:
+      - CGO_ENABLED=0
+    flags:
+      - -mod=vendor
+
+release:
+  prerelease: auto
+
+universal_binaries:
+  - replace: true
+
+brews:
+  -
+    name: esmjs
+    homepage: "https://github.com/naecoo/esmjs"
+    tap:
+      owner: naecoo
+      name: homebrew-naecoo
+    commit_author:
+      name: naecoo
+      email: ocean7hy@gmail.com
+
+checksum:
+  name_template: 'checksums.txt'
