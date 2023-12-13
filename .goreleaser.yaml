@@ -9,7 +9,7 @@ builds:
     env:
       - CGO_ENABLED=0
     flags:
-      - -mod=vendor
+      - -mod=readonly
 
 release:
   prerelease: auto
@@ -18,7 +18,7 @@ universal_binaries:
   - replace: true
 
 brews:
-  -
+  -`
     name: esmjs
     homepage: "https://github.com/naecoo/esmjs"
     repository:
